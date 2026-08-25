@@ -1,0 +1,6 @@
+h3
+pandas
+fastapi
+uvicorn
+networkx
+scipy
