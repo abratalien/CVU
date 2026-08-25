@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Climate Risk Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #0f172a; color: #f8fafc; padding: 20px; }
+        .card { background: #1e293b; padding: 20px; border-radius: 8px; max-width: 600px; margin: auto; }
+        h1 { color: #38bdf8; }
+        .badge { background: #ef4444; color: white; padding: 4px 8px; border-radius: 4px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Global Climate Risk & Supply Chain Engine</h1>
+        <p><strong>System Status:</strong> <span style="color: #4ade80;">Active</span></p>
+        <p><strong>Spatial Indexing:</strong> Uber H3 Hexagonal Grid (Resolution 7)</p>
+        <p><strong>Supply Node Status:</strong> <span class="badge">Port of Singapore - Critical Hazard</span></p>
+        <hr>
+        <p>To run live risk queries, execute the backend local server:</p>
+        <code>python src_graph_build_network.py</code>
+    </div>
+</body>
+</html>
