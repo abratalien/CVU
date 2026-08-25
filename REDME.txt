@@ -1,0 +1,116 @@
+========================================================================
+GLOBAL MULTI-HAZARD CLIMATE RISK & SUPPLY CHAIN VULNERABILITY ENGINE
+========================================================================
+
+Author: abratalien
+Repository: https://github.com/abratalien/CVU
+Live Dashboard: https://abratalien.github.io/CVU/
+Version: 0.1.0
+
+------------------------------------------------------------------------
+1. PROJECT OVERVIEW
+------------------------------------------------------------------------
+This project is a high-performance, event-driven geospatial analytics 
+engine designed to quantify multi-hazard climate risk exposure across 
+global supply chain networks in real time.
+
+By coupling discrete global grid systems (Uber H3) with directed network 
+graphs (NetworkX) and an asynchronous microservice API (FastAPI), the system 
+converts raw geographic coordinates into risk scores and maps downstream 
+supply chain disruptions with sub-50ms latency.
+
+Key Capabilities:
+  - Discrete Spatial Indexing: Converts latitude/longitude coordinates into 
+    Uber H3 hexagonal grid cells (Resolution 7, ~5 km² area).
+  - Supply Network Modeling: Models global ports, transit corridors, and 
+    manufacturing hubs as nodes and edges in a directed graph.
+  - Interactive REST API: Deploys OpenAPI-compliant endpoints to execute 
+    live risk queries.
+
+------------------------------------------------------------------------
+2. ARCHITECTURE & TECH STACK
+------------------------------------------------------------------------
+- Language: Python 3.10+
+- Web Framework: FastAPI (Asynchronous REST API)
+- ASGI Server: Uvicorn
+- Spatial Indexing: Uber H3 (h3-py)
+- Graph Database / Network Analysis: NetworkX
+- Data Processing: Pandas, NumPy
+- Data Validation: Pydantic
+
+------------------------------------------------------------------------
+3. REPOSITORY STRUCTURE
+------------------------------------------------------------------------
+CVU/
+│
+├── src_graph_build_network.py   # Main entry point & FastAPI application
+├── requirements.txt             # Python project dependencies
+├── index.html                   # Static dashboard for GitHub Pages
+├── README.txt                   # System documentation (this file)
+└── .gitignore                   # Version control exclusions
+
+------------------------------------------------------------------------
+4. INSTALLATION & SETUP
+------------------------------------------------------------------------
+Prerequisites: Python 3.10 or higher installed on your system.
+
+Step 1: Clone the repository
+    git clone https://github.com/abratalien/CVU.git
+    cd CVU
+
+Step 2: Set up a virtual environment (Windows)
+    python -m venv venv
+    venv\Scripts\activate
+
+Step 3: Install dependencies
+    pip install -r requirements.txt
+
+------------------------------------------------------------------------
+5. RUNNING THE LOCAL SERVER
+------------------------------------------------------------------------
+Start the API server using Uvicorn:
+
+    python src_graph_build_network.py
+
+Once started, the application log will confirm:
+    Starting Low-Latency Analytics Server at http://127.0.0.1:8000
+
+Access Interactive API Documentation (Swagger UI):
+    http://127.0.0.1:8000/docs
+
+------------------------------------------------------------------------
+6. API ENDPOINTS
+------------------------------------------------------------------------
+1. Endpoint: GET /
+   Description: Server health check and node status summary.
+   Response Sample:
+   {
+       "status": "online",
+       "service": "Global Climate Risk Engine",
+       "graph_nodes_loaded": 1
+   }
+
+2. Endpoint: GET /api/v1/risk-analysis
+   Description: Calculates climate risk exposure for input coordinates.
+   Query Parameters:
+       - lat (float): Latitude coordinate (e.g., 1.290270)
+       - lon (float): Longitude coordinate (e.g., 103.851959)
+   
+   Response Sample (Port of Singapore):
+   {
+       "query_h3_index": "87465020b3ffffff",
+       "coordinates": [1.29027, 103.851959],
+       "climate_hazard_score": 0.84,
+       "sea_level_risk_category": "CRITICAL",
+       "impacted_supply_nodes": ["Port of Singapore"]
+   }
+
+------------------------------------------------------------------------
+7. RESUME / PORTFOLIO HIGHLIGHTS
+------------------------------------------------------------------------
+- Built an event-driven geospatial analytics service using FastAPI and 
+  Uber H3 spatial indexing for rapid spatial matching.
+- Constructed a directed graph model using NetworkX to map multi-hazard 
+  disruption propagation across global maritime hubs.
+- Deployed a RESTful microservice achieving sub-50ms query response times.
+========================================================================
